@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://cegj02aqk5262"]
+
+[ext_resource type="Script" path="res://Scenes/beer_bottle.gd" id="1_hdfjf"]
+[ext_resource type="Texture2D" uid="uid://b4e6qown8uxyt" path="res://Assets/beer_asset-removebg-preview.png" id="1_mcv8n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n0jvh"]
+size = Vector2(13, 35)
+
+[sub_resource type="Animation" id="Animation_eh7il"]
+resource_name = "deafault"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.872665, 0.872665, -0.872665]
+}
+
+[sub_resource type="Animation" id="Animation_hr1em"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.872665]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gve3h"]
+_data = {
+"RESET": SubResource("Animation_hr1em"),
+"deafault": SubResource("Animation_eh7il")
+}
+
+[node name="Area2D" type="Area2D"]
+position = Vector2(0, 3)
+script = ExtResource("1_hdfjf")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -0.872665
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_mcv8n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_n0jvh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gve3h")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0wl6qq237mnj"]
+
+[ext_resource type="Texture2D" uid="uid://0ffhiir4omwn" path="res://Assets/empty_bar.png" id="1_sjhhy"]
+[ext_resource type="Texture2D" uid="uid://dydyygt5ag0ls" path="res://Assets/health_bar.png" id="2_lhs75"]
+[ext_resource type="Script" path="res://Scenes/texture_progress_bar.gd" id="3_8xctc"]
+
+[node name="TextureProgressBar" type="TextureProgressBar"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -49.0
+offset_top = 4.0
+offset_right = 49.0
+offset_bottom = 20.0
+grow_horizontal = 2
+value = 100.0
+texture_under = ExtResource("1_sjhhy")
+texture_progress = ExtResource("2_lhs75")
+script = ExtResource("3_8xctc")
